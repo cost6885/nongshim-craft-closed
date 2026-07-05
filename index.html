@@ -30,27 +30,12 @@
   .hero .period{margin-top:20px;display:inline-block;background:#fff;color:var(--red);font-weight:800;font-size:14px;padding:7px 16px;border-radius:999px;box-shadow:0 8px 0 var(--red-deep)}
 
   section{padding:40px 0}
-  .sec-head{text-align:center;margin-bottom:24px}
+  .sec-head{text-align:center;margin-bottom:22px}
   .sec-tag{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--red)}
   .sec-head h2{font-size:clamp(22px,5vw,30px);font-weight:900;margin-top:5px}
   .sec-head p{color:var(--ink-soft);font-size:14px;margin-top:6px}
 
-  .rank-list{display:flex;flex-direction:column;gap:8px}
-  .rank-row{display:flex;align-items:center;gap:12px;background:var(--card);border:1.5px solid var(--warm);border-radius:14px;padding:12px 14px}
-  .rank-row.z-prod{background:#fff0ef;border-color:#f0b3ae}
-  .rank-row.z-coffee{background:#f3ecdd}
-  .rank-badge{flex:0 0 auto;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;color:#fff;background:#b0945e}
-  .z-prod .rank-badge{background:linear-gradient(150deg,#f4ca52,#d69519)}
-  .rank-row .medal{font-size:22px;width:38px;text-align:center;flex:0 0 auto}
-  .rank-name{flex:1 1 auto;min-width:0;font-weight:800;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .rank-zone{font-size:11px;font-weight:800;color:var(--ink-soft)}
-  .z-prod .rank-zone{color:var(--red)}
-  .rank-score{font-weight:900;color:var(--red);font-size:15px;white-space:nowrap}
-  .rank-meta{text-align:center;color:var(--ink-soft);font-size:12px;margin-top:12px}
-  .rank-state{text-align:center;color:var(--ink-soft);font-size:14px;padding:24px 0}
-  .zone-label{font-size:12px;font-weight:800;color:var(--ink-soft);margin:14px 2px 4px}
-  .zone-label.prod{color:var(--red)}
-
+  /* 경품 안내 (인라인) */
   .prizes{background:var(--paper2)}
   .prize-list{display:flex;flex-direction:column;gap:10px}
   .prize{position:relative;display:flex;align-items:center;gap:12px;background:#fff;border:1.5px solid var(--warm);border-radius:14px;padding:12px;overflow:hidden}
@@ -70,10 +55,55 @@
   .coffee-card .cup{font-size:24px} .coffee-card .tag{font-size:11px;font-weight:800;color:var(--red)}
   .coffee-card .qty{font-size:20px;font-weight:900} .coffee-card .cn{font-size:12px;font-weight:700}
 
+  /* 내 순위 조회 */
+  .lookup{background:#fff;border:1.5px solid var(--warm);border-radius:16px;padding:16px;margin-bottom:20px}
+  .lookup-t{font-size:14px;font-weight:800;margin-bottom:4px}
+  .lookup-d{font-size:12px;color:var(--ink-soft);margin-bottom:10px}
+  .lookup-form{display:flex;gap:8px}
+  .lookup input{flex:1 1 auto;min-width:0;font-family:inherit;font-size:15px;padding:11px 14px;border:1.5px solid var(--warm);border-radius:11px;background:var(--paper);color:var(--ink)}
+  .lookup input:focus{outline:none;border-color:var(--red)}
+  .lookup button{flex:0 0 auto;cursor:pointer;font-family:inherit;font-weight:800;font-size:14px;color:#fff;background:var(--red);border:none;padding:0 20px;border-radius:11px}
+  #qResult{margin-top:12px}
+  #qResult .qr-empty{text-align:center;color:var(--ink-soft);font-size:13px;padding:10px}
+  #qResult .qr-head{font-size:12px;font-weight:800;color:var(--red);margin-bottom:8px}
+
+  /* 랭킹 */
+  .rank-list{display:flex;flex-direction:column;gap:9px}
+  .rank-row{position:relative;display:flex;gap:12px;background:var(--card);border:1.5px solid var(--warm);border-radius:14px;padding:12px 14px}
+  .rank-row.z-prod{background:#fff0ef;border-color:#f0b3ae}
+  .rank-row.z-coffee{background:#f3ecdd}
+  .rank-row.me{border-color:var(--red);border-width:2px;box-shadow:0 0 0 3px rgba(228,0,43,.12)}
+  .rank-badge{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#fff;background:#b0945e}
+  .z-prod .rank-badge{background:linear-gradient(150deg,#f4ca52,#d69519)}
+  .rank-row .medal{font-size:24px;width:34px;text-align:center;flex:0 0 auto;line-height:34px}
+  .rank-body{flex:1 1 auto;min-width:0}
+  .rank-line{display:flex;align-items:baseline;gap:8px}
+  .rank-name{flex:1 1 auto;min-width:0;font-weight:800;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rank-zone{font-size:10px;font-weight:800;color:var(--ink-soft);flex:0 0 auto}
+  .z-prod .rank-zone{color:var(--red)}
+  .rank-score{font-weight:900;color:var(--red);font-size:15px;white-space:nowrap;flex:0 0 auto}
+  .rank-prods{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+  .chip{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid transparent;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+  .chip.epic{background:#f3ecff;color:#7a3fd0;border-color:#dcc6f7}
+  .chip.rare{background:#e7f1ff;color:#2f6fd0;border-color:#c3dbfb}
+  .chip.invented{background:#e6f7f1;color:#1f9b74;border-color:#bfe9da}
+  .chip.common{background:#f0ece4;color:#7a6440;border-color:#ddd2c2}
+  .chip-more{font-size:11px;font-weight:800;color:var(--ink-soft);padding:3px 6px}
+  .rank-empty{grid-column:1/-1}
+  .rank-meta{text-align:center;color:var(--ink-soft);font-size:12px;margin-top:14px}
+  .rank-state{text-align:center;color:var(--ink-soft);font-size:14px;padding:24px 0}
+  .zone-label{font-size:12px;font-weight:800;color:var(--ink-soft);margin:16px 2px 4px}
+  .zone-label.prod{color:var(--red)}
+
+  /* 우측상단 고정 경품 버튼 */
+  .prz-fab{position:fixed;top:14px;right:14px;z-index:40;cursor:pointer;font-family:inherit;font-weight:800;font-size:14px;
+    display:inline-flex;align-items:center;gap:7px;color:#3a2400;
+    background:linear-gradient(150deg,#ffd75e,#f2a91f);border:1.5px solid #fff;
+    padding:11px 18px;border-radius:999px;box-shadow:0 6px 18px rgba(120,60,0,.35);transition:transform .1s,box-shadow .1s}
+  .prz-fab:hover{transform:translateY(-1px)}
+  .prz-fab:active{transform:translateY(1px);box-shadow:0 3px 10px rgba(120,60,0,.35)}
+
   /* 경품 상세 모달 */
-  .prz-btn{cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;color:#fff;background:var(--red);
-    border:none;padding:13px 26px;border-radius:999px;box-shadow:0 6px 0 var(--red-deep);transition:transform .08s,box-shadow .08s}
-  .prz-btn:active{transform:translateY(4px);box-shadow:0 2px 0 var(--red-deep)}
   .prz-overlay{position:fixed;inset:0;z-index:50;background:rgba(30,12,6,.55);backdrop-filter:blur(3px);
     display:flex;align-items:flex-start;justify-content:center;padding:24px 14px;overflow-y:auto}
   .prz-overlay[hidden]{display:none}
@@ -97,28 +127,18 @@
   footer{text-align:center;padding:34px 18px 52px;color:var(--ink-soft)}
   footer .brand{font-weight:900;color:var(--red);font-size:15px}
   footer .copy{font-size:12px;margin-top:4px}
-  @media (max-width:420px){ .coffee{grid-template-columns:1fr} }
+  @media (max-width:420px){ .coffee{grid-template-columns:1fr} .prz-fab{font-size:13px;padding:9px 14px} }
 </style>
 </head>
 <body>
+  <button id="przOpen" class="prz-fab" type="button">🎁 경품 안내</button>
+
   <header class="hero">
     <span class="kicker">🎉 NONGSHIM 랭킹 EVENT · 종료</span>
     <h1>이벤트가 종료되었습니다</h1>
     <p class="thanks">참여해주셔서 감사합니다 🙏</p>
     <span class="period">이벤트 기간 · 2026.06.23 ~ 07.05</span>
   </header>
-
-  <section>
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="sec-tag">FINAL RANKING</span>
-        <h2>🏆 최종 랭킹</h2>
-        <p>맛의 연구소, 마지막 순위입니다</p>
-      </div>
-      <div id="rank" class="rank-list"><div class="rank-state">순위를 불러오는 중…</div></div>
-      <div id="rankMeta" class="rank-meta"></div>
-    </div>
-  </section>
 
   <section class="prizes">
     <div class="wrap">
@@ -150,9 +170,29 @@
           <div class="coffee-card"><div class="cup">🎲</div><span class="tag">랜덤 추첨</span><div class="qty">10명</div><span class="cn">커피 쿠폰</span></div>
         </div>
       </div>
-      <div style="text-align:center;margin-top:20px">
-        <button id="przOpen" class="prz-btn" type="button">🎁 이벤트 경품 상세 보기</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-tag">FINAL RANKING</span>
+        <h2>🏆 최종 랭킹</h2>
+        <p>어떤 제품을 만들어 점수를 쌓았는지 함께 확인하세요</p>
       </div>
+
+      <div class="lookup">
+        <div class="lookup-t">🔎 내 순위 조회</div>
+        <div class="lookup-d">상위 20명만 기본 표시됩니다. 닉네임(로그인 시 입력한 이름)으로 본인 기록을 찾아보세요.</div>
+        <div class="lookup-form">
+          <input id="q" type="text" placeholder="예) 너구링" autocomplete="off" />
+          <button id="qBtn" type="button">조회</button>
+        </div>
+        <div id="qResult"></div>
+      </div>
+
+      <div id="rank" class="rank-list"><div class="rank-state">순위를 불러오는 중…</div></div>
+      <div id="rankMeta" class="rank-meta"></div>
     </div>
   </section>
 
@@ -212,35 +252,84 @@
   <script src="ranking.js"></script>
   <script>
     (function(){
-      var el = document.getElementById('rank');
-      var meta = document.getElementById('rankMeta');
+      var listEl = document.getElementById('rank');
+      var metaEl = document.getElementById('rankMeta');
+      var data = window.FINAL_RANKING || {};
+      var rows = data.top || [];
+
       function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]; }); }
       function zone(rank){ return rank<=3 ? 'prod' : (rank<=10 ? 'coffee' : ''); }
       function medal(rank){ return rank===1?'🥇':rank===2?'🥈':rank===3?'🥉':null; }
       function zoneName(rank){ return rank<=3?'제품존':(rank<=10?'커피존':'자유 경쟁'); }
-      var data = window.FINAL_RANKING || {};
-      var rows = data.top || [];
-      if(!rows.length){ el.innerHTML = '<div class="rank-state">표시할 순위가 없습니다.</div>'; return; }
-      var html = '', lastZone = null;
-      rows.forEach(function(r){
+      function rarityClass(r){ return (r==='epic'||r==='rare'||r==='invented') ? r : 'common'; }
+
+      function chips(products){
+        if(!products || !products.length) return '';
+        var shown = products.slice(0, 4);
+        var html = shown.map(function(p){
+          var label = (p.e ? p.e + ' ' : '') + esc(p.n);
+          return '<span class="chip '+rarityClass(p.r)+'" title="'+esc(p.n)+' · '+(p.pts||0)+'점">'+label+'</span>';
+        }).join('');
+        if(products.length > shown.length) html += '<span class="chip-more">+'+(products.length - shown.length)+'</span>';
+        return '<div class="rank-prods">'+html+'</div>';
+      }
+
+      function rowHtml(r, opts){
+        opts = opts || {};
         var z = zone(r.rank);
-        if(z !== lastZone){
-          lastZone = z;
-          if(z==='prod') html += '<div class="zone-label prod">🏆 제품존 (1~3위)</div>';
-          else if(z==='coffee') html += '<div class="zone-label">☕ 커피존 (4~10위)</div>';
-          else html += '<div class="zone-label">그 외</div>';
-        }
         var m = medal(r.rank);
-        html += '<div class="rank-row z-'+z+'">'
+        return '<div class="rank-row z-'+z+(opts.me?' me':'')+'">'
           + (m ? '<span class="medal">'+m+'</span>' : '<span class="rank-badge">'+r.rank+'</span>')
-          + '<span class="rank-name">'+esc(r.name)+'</span>'
-          + '<span class="rank-zone">'+zoneName(r.rank)+'</span>'
-          + '<span class="rank-score">'+ (Number(r.score)||0) +'점</span>'
+          + '<div class="rank-body">'
+          +   '<div class="rank-line">'
+          +     '<span class="rank-name">'+esc(r.name)+(opts.me?' <span class="rank-zone">(내 기록)</span>':'')+'</span>'
+          +     '<span class="rank-zone">'+zoneName(r.rank)+'</span>'
+          +     '<span class="rank-score">'+(Number(r.score)||0)+'점</span>'
+          +   '</div>'
+          +   chips(r.products)
+          + '</div>'
           + '</div>';
-      });
-      el.innerHTML = html;
-      var total = data.participantTotal || data.rankedTotal;
-      if(total) meta.textContent = '전체 참여 ' + total + '명';
+      }
+
+      // 기본: 상위 20명
+      if(!rows.length){
+        listEl.innerHTML = '<div class="rank-state">표시할 순위가 없습니다.</div>';
+      } else {
+        var top20 = rows.slice(0, 20);
+        var html = '', lastZone = null;
+        top20.forEach(function(r){
+          var z = zone(r.rank);
+          if(z !== lastZone){
+            lastZone = z;
+            if(z==='prod') html += '<div class="zone-label prod">🏆 제품존 (1~3위)</div>';
+            else if(z==='coffee') html += '<div class="zone-label">☕ 커피존 (4~10위)</div>';
+            else html += '<div class="zone-label">그 외 (11~20위)</div>';
+          }
+          html += rowHtml(r);
+        });
+        listEl.innerHTML = html;
+        var total = data.participantTotal || data.rankedTotal;
+        metaEl.textContent = '전체 참여 ' + (total||rows.length) + '명 · 점수 기록 ' + (data.rankedTotal||rows.length) + '명';
+      }
+
+      // 내 순위 조회
+      var q = document.getElementById('q');
+      var qBtn = document.getElementById('qBtn');
+      var qResult = document.getElementById('qResult');
+      function search(){
+        var term = (q.value||'').trim().toLowerCase();
+        if(!term){ qResult.innerHTML = ''; return; }
+        var hits = rows.filter(function(r){ return String(r.name||'').toLowerCase().indexOf(term) >= 0; });
+        if(!hits.length){
+          qResult.innerHTML = '<div class="qr-empty">‘'+esc(q.value.trim())+'’ 검색 결과가 없습니다.<br>닉네임 일부로 다시 검색해보세요. (점수 기록이 없는 참여자는 조회되지 않습니다)</div>';
+          return;
+        }
+        hits = hits.slice(0, 15);
+        qResult.innerHTML = '<div class="qr-head">🔎 조회 결과 '+hits.length+'명</div>'
+          + hits.map(function(r){ return rowHtml(r, {me:true}); }).join('');
+      }
+      qBtn.addEventListener('click', search);
+      q.addEventListener('keydown', function(e){ if(e.key==='Enter') search(); });
     })();
   </script>
 </body>
