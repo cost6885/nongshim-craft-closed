@@ -70,6 +70,30 @@
   .coffee-card .cup{font-size:24px} .coffee-card .tag{font-size:11px;font-weight:800;color:var(--red)}
   .coffee-card .qty{font-size:20px;font-weight:900} .coffee-card .cn{font-size:12px;font-weight:700}
 
+  /* 경품 상세 모달 */
+  .prz-btn{cursor:pointer;font-family:inherit;font-weight:800;font-size:15px;color:#fff;background:var(--red);
+    border:none;padding:13px 26px;border-radius:999px;box-shadow:0 6px 0 var(--red-deep);transition:transform .08s,box-shadow .08s}
+  .prz-btn:active{transform:translateY(4px);box-shadow:0 2px 0 var(--red-deep)}
+  .prz-overlay{position:fixed;inset:0;z-index:50;background:rgba(30,12,6,.55);backdrop-filter:blur(3px);
+    display:flex;align-items:flex-start;justify-content:center;padding:24px 14px;overflow-y:auto}
+  .prz-overlay[hidden]{display:none}
+  .prz-modal{width:100%;max-width:520px;background:var(--paper);border-radius:20px;overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,.35);animation:przIn .22s ease}
+  @keyframes przIn{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+  .prz-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;background:#fff;border-bottom:1.5px solid var(--warm)}
+  .prz-head strong{font-size:17px;font-weight:900}
+  .prz-x{cursor:pointer;border:none;background:var(--paper2);width:34px;height:34px;border-radius:50%;font-size:15px;font-weight:900;color:var(--ink-soft)}
+  .prz-hero{text-align:center;color:#fff;padding:26px 18px;background:radial-gradient(120% 90% at 80% -10%,rgba(255,196,0,.5),transparent 55%),linear-gradient(160deg,var(--red),var(--red-deep))}
+  .prz-hero-tag{font-size:11px;font-weight:800;letter-spacing:.14em;opacity:.92}
+  .prz-hero-title{font-size:20px;font-weight:900;margin:8px 0}
+  .prz-hero-period{display:inline-block;background:#fff;color:var(--red);font-weight:800;font-size:13px;padding:5px 14px;border-radius:999px}
+  #przBody{padding:18px 18px 0}
+  .prz-notes{padding:6px 20px 22px}
+  .prz-notes-head{font-size:12px;font-weight:800;color:var(--red);margin:14px 0 6px}
+  .prz-notes ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+  .prz-notes li{position:relative;padding-left:14px;font-size:12px;color:var(--ink-soft);line-height:1.5;word-break:keep-all}
+  .prz-notes li::before{content:"·";position:absolute;left:3px;font-weight:900;color:var(--red)}
+
   footer{text-align:center;padding:34px 18px 52px;color:var(--ink-soft)}
   footer .brand{font-weight:900;color:var(--red);font-size:15px}
   footer .copy{font-size:12px;margin-top:4px}
@@ -103,26 +127,31 @@
         <h2>🎁 경품 안내</h2>
         <p>당첨자 발표는 농심몰 공지를 통해 안내됩니다</p>
       </div>
-      <div class="prize-list">
-        <article class="prize gold">
-          <span class="medal">🥇</span>
-          <div class="thumb"><img src="prizes/rank1.jpg" alt="누들핏 터치 무드등 세트" loading="lazy"></div>
-          <div class="info"><span class="rk">랭킹 1위 · 1명</span><div class="nm">누들핏 터치 무드등 세트</div><span class="pr">3만원 상당</span></div>
-        </article>
-        <article class="prize silver">
-          <span class="medal">🥈</span>
-          <div class="thumb"><img src="prizes/rank2.jpg" alt="츄파춥스 동물 키우기 게임기 세트" loading="lazy"></div>
-          <div class="info"><span class="rk">랭킹 2위 · 1명</span><div class="nm">츄파춥스 동물 키우기 게임기 세트</div><span class="pr">2만원 상당</span></div>
-        </article>
-        <article class="prize bronze">
-          <span class="medal">🥉</span>
-          <div class="thumb"><img src="prizes/rank3.jpg" alt="포테토칩 메모지 세트" loading="lazy"></div>
-          <div class="info"><span class="rk">랭킹 3위 · 1명</span><div class="nm">포테토칩 메모지 세트</div><span class="pr">1만원 상당</span></div>
-        </article>
+      <div id="prizeDetail">
+        <div class="prize-list">
+          <article class="prize gold">
+            <span class="medal">🥇</span>
+            <div class="thumb"><img src="prizes/rank1.jpg" alt="누들핏 터치 무드등 세트" loading="lazy"></div>
+            <div class="info"><span class="rk">랭킹 1위 · 1명</span><div class="nm">누들핏 터치 무드등 세트</div><span class="pr">3만원 상당</span></div>
+          </article>
+          <article class="prize silver">
+            <span class="medal">🥈</span>
+            <div class="thumb"><img src="prizes/rank2.jpg" alt="츄파춥스 동물 키우기 게임기 세트" loading="lazy"></div>
+            <div class="info"><span class="rk">랭킹 2위 · 1명</span><div class="nm">츄파춥스 동물 키우기 게임기 세트</div><span class="pr">2만원 상당</span></div>
+          </article>
+          <article class="prize bronze">
+            <span class="medal">🥉</span>
+            <div class="thumb"><img src="prizes/rank3.jpg" alt="포테토칩 메모지 세트" loading="lazy"></div>
+            <div class="info"><span class="rk">랭킹 3위 · 1명</span><div class="nm">포테토칩 메모지 세트</div><span class="pr">1만원 상당</span></div>
+          </article>
+        </div>
+        <div class="coffee">
+          <div class="coffee-card"><div class="cup">☕</div><span class="tag">랭킹 4~10위</span><div class="qty">7명</div><span class="cn">커피 쿠폰</span></div>
+          <div class="coffee-card"><div class="cup">🎲</div><span class="tag">랜덤 추첨</span><div class="qty">10명</div><span class="cn">커피 쿠폰</span></div>
+        </div>
       </div>
-      <div class="coffee">
-        <div class="coffee-card"><div class="cup">☕</div><span class="tag">랭킹 4~10위</span><div class="qty">7명</div><span class="cn">커피 쿠폰</span></div>
-        <div class="coffee-card"><div class="cup">🎲</div><span class="tag">랜덤 추첨</span><div class="qty">10명</div><span class="cn">커피 쿠폰</span></div>
+      <div style="text-align:center;margin-top:20px">
+        <button id="przOpen" class="prz-btn" type="button">🎁 이벤트 경품 상세 보기</button>
       </div>
     </div>
   </section>
@@ -131,6 +160,54 @@
     <div class="brand">농심 크래프트 · 맛의 연구소</div>
     <div class="copy">그동안 함께해주셔서 감사합니다. ⓒ NONGSHIM</div>
   </footer>
+
+  <div id="przOverlay" class="prz-overlay" hidden>
+    <div class="prz-modal" role="dialog" aria-modal="true" aria-label="이벤트 경품 안내">
+      <div class="prz-head">
+        <strong>🎁 이벤트 경품</strong>
+        <button id="przClose" class="prz-x" type="button" aria-label="닫기">✕</button>
+      </div>
+      <div class="prz-hero">
+        <div class="prz-hero-tag">NONGSHIM 랭킹 EVENT</div>
+        <h3 class="prz-hero-title">랭킹 올리고 경품 받아가세요 🎁</h3>
+        <div class="prz-hero-period">2026.06.23 ~ 07.05</div>
+      </div>
+      <div id="przBody"></div>
+      <div class="prz-notes">
+        <div class="prz-notes-head">유의사항</div>
+        <ul>
+          <li>당첨자 발표는 이벤트 종료 후 게임 내 랭킹과 농심몰 공지를 통해 안내됩니다.</li>
+          <li>1~3위 실물 경품은 배송으로, 커피 쿠폰은 모바일 기프티콘으로 발송됩니다.</li>
+          <li>경품의 색상·구성은 수급 상황에 따라 동일 가격대의 상품으로 변경될 수 있습니다.</li>
+          <li>부정한 방법으로 응모·참여한 경우 당첨이 취소되며, 본 이벤트는 사정에 따라 변경·종료될 수 있습니다.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var overlay = document.getElementById('przOverlay');
+      var body = document.getElementById('przBody');
+      var openBtn = document.getElementById('przOpen');
+      var closeBtn = document.getElementById('przClose');
+      var populated = false;
+      function open(){
+        if(!populated){
+          var src = document.getElementById('prizeDetail');
+          if(src){ body.appendChild(src.cloneNode(true)); }
+          populated = true;
+        }
+        overlay.hidden = false;
+        document.body.style.overflow = 'hidden';
+      }
+      function close(){ overlay.hidden = true; document.body.style.overflow = ''; }
+      openBtn && openBtn.addEventListener('click', open);
+      closeBtn && closeBtn.addEventListener('click', close);
+      overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !overlay.hidden) close(); });
+    })();
+  </script>
 
   <script src="ranking.js"></script>
   <script>
