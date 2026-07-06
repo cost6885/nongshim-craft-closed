@@ -183,9 +183,9 @@
 
       <div class="lookup">
         <div class="lookup-t">🔎 내 순위 조회</div>
-        <div class="lookup-d">상위 20명만 기본 표시됩니다. 닉네임(로그인 시 입력한 이름)으로 본인 기록을 찾아보세요.</div>
+        <div class="lookup-d">상위 20명만 기본 표시됩니다. <b>닉네임</b> 또는 <b>사번</b>으로 본인 기록을 찾아보세요.</div>
         <div class="lookup-form">
-          <input id="q" type="text" placeholder="예) 너구링" autocomplete="off" />
+          <input id="q" type="text" placeholder="예) 너구링 또는 사번 2111008" autocomplete="off" />
           <button id="qBtn" type="button">조회</button>
         </div>
         <div id="qResult"></div>
@@ -316,17 +316,38 @@
       var q = document.getElementById('q');
       var qBtn = document.getElementById('qBtn');
       var qResult = document.getElementById('qResult');
-      function search(){
-        var term = (q.value||'').trim().toLowerCase();
-        if(!term){ qResult.innerHTML = ''; return; }
-        var hits = rows.filter(function(r){ return String(r.name||'').toLowerCase().indexOf(term) >= 0; });
+      function sha256hex(s){
+        if(!(window.crypto && crypto.subtle)) return Promise.resolve('');
+        return crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)).then(function(buf){
+          return Array.prototype.map.call(new Uint8Array(buf), function(b){ return ('0'+b.toString(16)).slice(-2); }).join('');
+        }).catch(function(){ return ''; });
+      }
+      function render(hits){
         if(!hits.length){
-          qResult.innerHTML = '<div class="qr-empty">‘'+esc(q.value.trim())+'’ 검색 결과가 없습니다.<br>닉네임 일부로 다시 검색해보세요. (점수 기록이 없는 참여자는 조회되지 않습니다)</div>';
+          qResult.innerHTML = '<div class="qr-empty">‘'+esc(q.value.trim())+'’ 검색 결과가 없습니다.<br>닉네임 일부 또는 정확한 사번으로 다시 검색해보세요.<br>(점수 기록이 없는 참여자는 조회되지 않습니다)</div>';
           return;
         }
-        hits = hits.slice(0, 15);
+        hits = hits.slice().sort(function(a,b){ return a.rank - b.rank; }).slice(0, 15);
         qResult.innerHTML = '<div class="qr-head">🔎 조회 결과 '+hits.length+'명</div>'
           + hits.map(function(r){ return rowHtml(r, {me:true}); }).join('');
+      }
+      function search(){
+        var raw = (q.value||'').trim();
+        if(!raw){ qResult.innerHTML = ''; return; }
+        var term = raw.toLowerCase();
+        var hits = rows.filter(function(r){ return String(r.name||'').toLowerCase().indexOf(term) >= 0; });
+        var digits = raw.replace(/\s+/g,'');
+        // 사번(숫자) → 해시 매칭. 평문 사번은 데이터에 없고 해시만 비교한다.
+        if(/^\d{4,}$/.test(digits)){
+          sha256hex(digits).then(function(hx){
+            if(hx){
+              rows.forEach(function(r){ if(r.h && r.h === hx && hits.indexOf(r) < 0) hits.push(r); });
+            }
+            render(hits);
+          });
+        } else {
+          render(hits);
+        }
       }
       qBtn.addEventListener('click', search);
       q.addEventListener('keydown', function(e){ if(e.key==='Enter') search(); });
