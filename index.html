@@ -124,6 +124,56 @@
   .prz-notes li{position:relative;padding-left:14px;font-size:12px;color:var(--ink-soft);line-height:1.5;word-break:keep-all}
   .prz-notes li::before{content:"·";position:absolute;left:3px;font-weight:900;color:var(--red)}
 
+  /* 클릭 가능한 랭킹 행 */
+  .rank-row{cursor:pointer;transition:transform .08s,box-shadow .08s}
+  .rank-row:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(120,60,0,.12)}
+  .rank-caret{align-self:center;flex:0 0 auto;color:var(--warm);font-size:20px;font-weight:900;line-height:1}
+
+  /* 점수 상세 모달 */
+  .pm-overlay{position:fixed;inset:0;z-index:60;background:rgba(30,12,6,.6);backdrop-filter:blur(3px);
+    display:flex;align-items:flex-start;justify-content:center;padding:20px 12px;overflow-y:auto}
+  .pm-overlay[hidden]{display:none}
+  .pm{position:relative;width:100%;max-width:520px;background:var(--paper);border-radius:20px;overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,.4);animation:przIn .22s ease}
+  .pm-close{position:absolute;top:12px;right:12px;z-index:2;cursor:pointer;border:none;background:rgba(255,255,255,.85);
+    width:34px;height:34px;border-radius:50%;font-size:15px;font-weight:900;color:var(--ink-soft)}
+  .pm-head{text-align:center;color:#fff;padding:26px 18px 20px;background:radial-gradient(120% 90% at 80% -10%,rgba(255,196,0,.5),transparent 55%),linear-gradient(160deg,var(--red),var(--red-deep))}
+  .pm-medal{font-size:34px;font-weight:900;line-height:1;margin-bottom:6px}
+  .pm-medal.is-rank{font-size:22px}
+  .pm-name{font-size:18px;font-weight:900}
+  .pm-score{font-size:15px;font-weight:800;margin-top:2px;opacity:.97}
+  .pm-score .pm-rank{font-weight:700;opacity:.85;font-size:13px}
+  .pm-rule{padding:14px 18px 0;text-align:center}
+  .pm-rule span{display:block;font-size:13px;font-weight:800;color:var(--ink)}
+  .pm-rule small{display:block;font-size:11px;color:var(--ink-soft);margin-top:3px;line-height:1.45;word-break:keep-all}
+  .pm-bd{display:flex;gap:8px;padding:14px 18px 4px}
+  .pm-bd span{flex:1;text-align:center;background:#fff;border:1.5px solid var(--warm);border-radius:12px;padding:9px 4px;font-size:11px;font-weight:700;color:var(--ink-soft)}
+  .pm-bd b{display:block;font-size:19px;font-weight:900;color:var(--red);margin-bottom:1px}
+  .pm-bd span:last-child{background:var(--red);border-color:var(--red);color:#fff}
+  .pm-bd span:last-child b{color:#fff}
+  .pm-sec{font-size:12px;font-weight:800;color:var(--red);padding:16px 18px 6px}
+  .pm-badges{display:flex;flex-wrap:wrap;gap:6px;padding:0 18px}
+  .pm-badge{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:800;padding:5px 11px;border-radius:999px;background:#f0ece4;color:#7a6440;border:1.5px solid #ddd2c2}
+  .pm-badge.tier-gold{background:#fff6df;color:#a9791a;border-color:#eecb76}
+  .pm-badge.tier-silver{background:#eef2f6;color:#5a6b7a;border-color:#c9d6e0}
+  .pm-badge.tier-bronze{background:#f7ece1;color:#9a6a3c;border-color:#e2c3a3}
+  .pm-badge-ic{font-size:14px}
+  .pm-ach{display:flex;flex-wrap:wrap;gap:6px;padding:0 18px}
+  .pm-ach-card{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid var(--warm);border-radius:11px;padding:5px 10px;font-size:12px;font-weight:700}
+  .pm-ach-e{font-size:14px} .pm-ach-p{color:var(--red);font-weight:900;font-size:11px}
+  .pm-best{padding:0 18px 20px;display:flex;flex-direction:column;gap:6px}
+  .pm-best-item{display:flex;align-items:center;gap:9px;background:#fff;border:1.5px solid var(--warm);border-radius:11px;padding:8px 11px}
+  .pm-best-item.is-first{border-color:#f0b3ae;background:#fff5f4}
+  .pm-best-rank{flex:0 0 auto;width:20px;text-align:center;font-weight:900;font-size:12px;color:var(--ink-soft)}
+  .pm-best-emoji{flex:0 0 auto;font-size:18px}
+  .pm-best-name{flex:1 1 auto;min-width:0;font-size:13px;font-weight:800;display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pm-best-rar{flex:0 0 auto;font-size:9px;font-weight:800;padding:1px 6px;border-radius:999px}
+  .pm-best-rar.epic{background:#f3ecff;color:#7a3fd0} .pm-best-rar.rare{background:#e7f1ff;color:#2f6fd0}
+  .pm-best-rar.invented{background:#e6f7f1;color:#1f9b74} .pm-best-rar.common{background:#f0ece4;color:#7a6440}
+  .pm-first-pin{flex:0 0 auto;font-size:10px;font-weight:800;color:var(--red)}
+  .pm-best-pts{flex:0 0 auto;font-weight:900;color:var(--red);font-size:14px}
+  .pm-empty{color:var(--ink-soft);font-size:13px;padding:2px 18px}
+
   footer{text-align:center;padding:34px 18px 52px;color:var(--ink-soft)}
   footer .brand{font-weight:900;color:var(--red);font-size:15px}
   footer .copy{font-size:12px;margin-top:4px}
@@ -225,6 +275,13 @@
     </div>
   </div>
 
+  <div id="pmOverlay" class="pm-overlay" hidden>
+    <div class="pm" role="dialog" aria-modal="true" aria-label="점수 세부 내역">
+      <button id="pmClose" class="pm-close" type="button" aria-label="닫기">✕</button>
+      <div id="pmBody"></div>
+    </div>
+  </div>
+
   <script>
     (function(){
       var overlay = document.getElementById('przOverlay');
@@ -278,7 +335,7 @@
         opts = opts || {};
         var z = zone(r.rank);
         var m = medal(r.rank);
-        return '<div class="rank-row z-'+z+(opts.me?' me':'')+'">'
+        return '<div class="rank-row z-'+z+(opts.me?' me':'')+'" data-rank="'+r.rank+'" role="button" tabindex="0">'
           + (m ? '<span class="medal">'+m+'</span>' : '<span class="rank-badge">'+r.rank+'</span>')
           + '<div class="rank-body">'
           +   '<div class="rank-line">'
@@ -288,6 +345,7 @@
           +   '</div>'
           +   chips(r.products)
           + '</div>'
+          + '<span class="rank-caret">›</span>'
           + '</div>';
       }
 
@@ -351,6 +409,80 @@
       }
       qBtn.addEventListener('click', search);
       q.addEventListener('keydown', function(e){ if(e.key==='Enter') search(); });
+
+      // ── 상세 모달 (기존 랭킹보드 PlayerModal 재현) ──
+      var byRank = {};
+      rows.forEach(function(r){ byRank[r.rank] = r; });
+      var pmOverlay = document.getElementById('pmOverlay');
+      var pmBody = document.getElementById('pmBody');
+      var BEST_N = 12;
+
+      function rarKo(r){ return r==='epic'?'에픽':r==='rare'?'레어':r==='invented'?'발명':'일반'; }
+
+      function playerHtml(r){
+        var m = medal(r.rank);
+        var head = '<div class="pm-head">'
+          + '<div class="pm-medal '+(m?'is-podium':'is-rank')+'">'+(m||(r.rank+'위'))+'</div>'
+          + '<div class="pm-name">'+esc(r.name)+'</div>'
+          + '<div class="pm-score">'+(Number(r.score)||0)+'점 <span class="pm-rank">· 전체 '+r.rank+'위</span></div>'
+          + '</div>';
+        var rule = '<div class="pm-rule">'
+          + '<span>제품 점수 상위 '+BEST_N+'종 + 업적 보너스</span>'
+          + '<small>발견 '+(r.disc||0)+'종 중 희귀도·난이도·최초 발견 점수가 높은 제품이 랭킹에 반영됩니다.</small>'
+          + '</div>';
+        var bd = '<div class="pm-bd">'
+          + '<span><b>'+(r.pt||0)+'</b>제품 점수</span>'
+          + '<span><b>'+(r.at||0)+'</b>업적 보너스</span>'
+          + '<span><b>'+(Number(r.score)||0)+'</b>합계</span>'
+          + '</div>';
+        var badges = (r.badges||[]);
+        var badgeSec = '<div class="pm-sec">획득 메달'+(badges.length?' ('+badges.length+')':'')+'</div>'
+          + '<div class="pm-badges">'
+          + (badges.length ? badges.map(function(b){ return '<span class="pm-badge tier-'+(b.t||'plain')+'"><span class="pm-badge-ic">'+b.i+'</span>'+esc(b.l)+'</span>'; }).join('')
+                           : '<span class="pm-empty">아직 메달이 없어요</span>')
+          + '</div>';
+        var ach = (r.ach||[]);
+        var achSec = ach.length ? ('<div class="pm-sec">달성 업적 ('+ach.length+') · +'+(r.at||0)+'점</div>'
+          + '<div class="pm-ach">'
+          + ach.map(function(a){ return '<span class="pm-ach-card"><span class="pm-ach-e">'+a.e+'</span><span class="pm-ach-t">'+esc(a.t)+'</span><span class="pm-ach-p">+'+a.p+'</span></span>'; }).join('')
+          + '</div>') : '';
+        var prods = (r.products||[]);
+        var best = '<div class="pm-sec">점수 반영 TOP '+BEST_N+' · '+(r.pt||0)+'점</div>'
+          + '<div class="pm-best">'
+          + (prods.length ? prods.map(function(p,i){
+              return '<div class="pm-best-item'+(p.o?' is-first':'')+'">'
+                + '<span class="pm-best-rank">'+(i+1)+'</span>'
+                + '<span class="pm-best-emoji">'+(p.e||'🍜')+'</span>'
+                + '<span class="pm-best-name">'+esc(p.n)+'<span class="pm-best-rar '+rarityClass(p.r)+'">'+rarKo(p.r)+'</span></span>'
+                + (p.o?'<span class="pm-first-pin">🚩 최초</span>':'')
+                + '<span class="pm-best-pts">'+p.pts+'</span>'
+                + '</div>';
+            }).join('') : '<span class="pm-empty">발견 기록 없음</span>')
+          + '</div>';
+        return head + rule + bd + badgeSec + achSec + best;
+      }
+
+      function openPlayer(r){
+        if(!r) return;
+        pmBody.innerHTML = playerHtml(r);
+        pmBody.scrollTop = 0;
+        pmOverlay.hidden = false;
+        document.body.style.overflow = 'hidden';
+      }
+      function closePlayer(){ pmOverlay.hidden = true; document.body.style.overflow = ''; }
+
+      document.addEventListener('click', function(e){
+        var row = e.target.closest && e.target.closest('.rank-row[data-rank]');
+        if(row){ openPlayer(byRank[Number(row.getAttribute('data-rank'))]); }
+      });
+      document.addEventListener('keydown', function(e){
+        if((e.key==='Enter'||e.key===' ') && e.target.classList && e.target.classList.contains('rank-row')){
+          e.preventDefault(); openPlayer(byRank[Number(e.target.getAttribute('data-rank'))]);
+        }
+        if(e.key==='Escape' && !pmOverlay.hidden) closePlayer();
+      });
+      pmOverlay.addEventListener('click', function(e){ if(e.target===pmOverlay || e.target.classList.contains('pm-close')) closePlayer(); });
+      document.getElementById('pmClose').addEventListener('click', closePlayer);
     })();
   </script>
 </body>
